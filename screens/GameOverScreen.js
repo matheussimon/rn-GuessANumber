@@ -1,19 +1,23 @@
 import React from 'react';
 import {View,Text,StyleSheet, Button, Image} from 'react-native';
+import Colors from '../constants/colors';
+import MButton from '../components/MButton';
 
 const GameOverScreen = props => {
     return (
         <View style={styles.screen}>
-            <Text>The Game is Over!</Text>
+            <Text style={styles.resultText}>The Game is Over!</Text>
             <View style={styles.imageContainer}>
             <Image 
             source={require('../assets/Winner.png')} 
             style={styles.image}
             resizeMode="contain"/>
             </View>
-            <Text>Number of rounds: {props.roundsNumber}</Text>
-            <Text>Number was: {props.userNumber}</Text>
-            <Button title="New Game" onPress={props.onRestart}/>
+            <View style={styles.textContainer}>
+            <Text style={styles.resultText}>Number of rounds: <Text style={styles.highlight}>{props.roundsNumber}</Text></Text>
+            <Text style={styles.resultText}>Number was: <Text style={styles.highlight}>{props.userNumber}</Text></Text>
+            </View>
+            <MButton onPress={props.onRestart}>NEW GAME</MButton>
         </View>
     )
 }
@@ -28,6 +32,10 @@ const styles = StyleSheet.create({
         width:'100%',
         height: '100%',
     },
+    resultText:{
+        fontSize:20,
+        textAlign:'center'
+    },
     imageContainer:{
         width:'80%',
         height:200,
@@ -36,7 +44,14 @@ const styles = StyleSheet.create({
         borderColor:'black',
         overflow:'hidden',
         marginVertical: 30,
+    },
+    highlight:{
+        color:Colors.primary
+    },
+    textContainer:{
+        marginBottom:20,
     }
+    
 });
 
 export default GameOverScreen;
