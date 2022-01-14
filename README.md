@@ -1,3 +1,3 @@
-# portfolio
+# rn-GuessANumber
 
-Portfolio
+Guess a number project developed in React Native
